@@ -3,6 +3,7 @@
 import json
 import logging
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from starlette.responses import StreamingResponse
 
@@ -20,6 +21,14 @@ app = FastAPI(
     title="ZadkGuide Agent API",
     description="API for interacting with the ZadkGuide multi-agent system.",
     version="1.0.0",
+)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:3000", "http://localhost:3001"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 # Use DatabaseSessionService with a local SQLite file for robust session management.

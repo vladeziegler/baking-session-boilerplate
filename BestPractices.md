@@ -26,3 +26,18 @@ You can only have one built-in tool per agent
 *Mistakes to avoid*
 Wrap built-in tools as AgenTool
 
+
+
+**Steps**
+0. Access GCP
+1. Agents
+2. Tools
+3. Sessions
+4. Streams
+
+5. API Service
+
+6. Create UI
+7. Add stores
+8. Connect to Components
+9. 
