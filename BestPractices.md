@@ -17,3 +17,12 @@
 You need to only have code_executor=BuiltInCodeExecutor() in agent, remove tool parameter
 You can only have one built-in tool per agent
 
+
+**MultiAIAgent**
+1. Root agent
+2. Subagents as directory
+3. Then extra folders
+
+*Mistakes to avoid*
+Wrap built-in tools as AgenTool
+
