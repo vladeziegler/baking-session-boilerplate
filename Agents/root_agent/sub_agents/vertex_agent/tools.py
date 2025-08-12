@@ -196,82 +196,82 @@ def query_all_files(query: str, tool_context: ToolContext) -> dict:
         return {"status": "error", "message": str(e)}
 
 
-if __name__ == "__main__":
+# if __name__ == "__main__":
 
-    class MockToolContext:
-        """A mock ToolContext for standalone testing."""
+#     class MockToolContext:
+#         """A mock ToolContext for standalone testing."""
 
-        def __init__(self, state=None):
-            self._state = state if state is not None else {}
+#         def __init__(self, state=None):
+#             self._state = state if state is not None else {}
 
-        def get_tool_state(self):
-            return self._state
+#         def get_tool_state(self):
+#             return self._state
 
-    def run_tests():
-        """Runs a sequence of tests on the RAG tools."""
-        print("--- Testing Vertex RAG Tools ---")
-        mock_context = MockToolContext()
+#     def run_tests():
+#         """Runs a sequence of tests on the RAG tools."""
+#         print("--- Testing Vertex RAG Tools ---")
+#         mock_context = MockToolContext()
 
-        # 1. Test list_all_files
-        print("\n[1] Testing list_all_files...")
-        list_result = list_all_files(mock_context)
-        print(json.dumps(list_result, indent=2))
+#         # 1. Test list_all_files
+#         print("\n[1] Testing list_all_files...")
+#         list_result = list_all_files(mock_context)
+#         print(json.dumps(list_result, indent=2))
 
-        # 2. Test add_file
-        print("\n[2] Testing add_file...")
-        test_file_path = "rag_test_file.txt"
-        test_file_content = "This is a test file for the RAG agent."
-        with open(test_file_path, "w") as f:
-            f.write(test_file_content)
+#         # 2. Test add_file
+#         print("\n[2] Testing add_file...")
+#         test_file_path = "rag_test_file.txt"
+#         test_file_content = "This is a test file for the RAG agent."
+#         with open(test_file_path, "w") as f:
+#             f.write(test_file_content)
 
-        added_file_resource_name = None
-        try:
-            add_result = add_file(
-                file_path=test_file_path,
-                display_name="Test File",
-                description="A file for testing add_file tool.",
-                tool_context=mock_context,
-            )
-            print(json.dumps(add_result, indent=2))
-            if add_result.get("status") == "success":
-                added_file_resource_name = add_result.get("resource_name")
+#         added_file_resource_name = None
+#         try:
+#             add_result = add_file(
+#                 file_path=test_file_path,
+#                 display_name="Test File",
+#                 description="A file for testing add_file tool.",
+#                 tool_context=mock_context,
+#             )
+#             print(json.dumps(add_result, indent=2))
+#             if add_result.get("status") == "success":
+#                 added_file_resource_name = add_result.get("resource_name")
 
-            # 3. Test query_all_files (interactive)
-            print("\n[3] Testing query_all_files...")
-            user_query = input("Enter your query for the RAG system: ")
-            if user_query:
-                query_result = query_all_files(
-                    query=user_query, tool_context=mock_context
-                )
-                print(json.dumps(query_result, indent=2))
-            else:
-                print("Query skipped.")
+#             # 3. Test query_all_files (interactive)
+#             print("\n[3] Testing query_all_files...")
+#             user_query = input("Enter your query for the RAG system: ")
+#             if user_query:
+#                 query_result = query_all_files(
+#                     query=user_query, tool_context=mock_context
+#                 )
+#                 print(json.dumps(query_result, indent=2))
+#             else:
+#                 print("Query skipped.")
 
-            # 4. Test delete_file_by_id
-            if added_file_resource_name:
-                print("\n[4] Testing delete_file_by_id...")
-                # Prompting for confirmation before deleting
-                confirm = input(
-                    f"Delete the test file ({added_file_resource_name})? (y/n): "
-                )
-                if confirm.lower() == "y":
-                    delete_result = delete_file_by_id(
-                        file_name=added_file_resource_name, tool_context=mock_context
-                    )
-                    print(json.dumps(delete_result, indent=2))
-                else:
-                    print("Deletion skipped.")
-            else:
-                print(
-                    "\n[4] Skipping delete_file_by_id (file was not added successfully)."
-                )
+#             # 4. Test delete_file_by_id
+#             if added_file_resource_name:
+#                 print("\n[4] Testing delete_file_by_id...")
+#                 # Prompting for confirmation before deleting
+#                 confirm = input(
+#                     f"Delete the test file ({added_file_resource_name})? (y/n): "
+#                 )
+#                 if confirm.lower() == "y":
+#                     delete_result = delete_file_by_id(
+#                         file_name=added_file_resource_name, tool_context=mock_context
+#                     )
+#                     print(json.dumps(delete_result, indent=2))
+#                 else:
+#                     print("Deletion skipped.")
+#             else:
+#                 print(
+#                     "\n[4] Skipping delete_file_by_id (file was not added successfully)."
+#                 )
 
-        finally:
-            # Clean up the test file
-            if os.path.exists(test_file_path):
-                os.remove(test_file_path)
-                print(f"\nCleaned up test file: {test_file_path}")
+#         finally:
+#             # Clean up the test file
+#             if os.path.exists(test_file_path):
+#                 os.remove(test_file_path)
+#                 print(f"\nCleaned up test file: {test_file_path}")
 
-        print("\n--- All tests finished ---")
+#         print("\n--- All tests finished ---")
 
-    run_tests()
+#     run_tests()

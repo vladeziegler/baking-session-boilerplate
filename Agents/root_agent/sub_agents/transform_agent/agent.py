@@ -1,13 +1,9 @@
 from google.adk.agents import Agent
 from .prompt import TRANSFORM_AGENT_PROMPT
-# from google.adk.code_executors import BuiltInCodeExecutor
-from google.adk.agents import Agent
-from ..calculator_agent.agent import calculator_agent
 from ..coding_agent.agent import coding_agent
 from google.adk.tools import agent_tool
-# from google.adk.tools import CodeExecutionTool
-
 from pydantic import BaseModel, Field
+
 
 class Variable(BaseModel):
     variable: str = Field(
@@ -20,15 +16,16 @@ class Variable(BaseModel):
         description="The time of the variable. Should be in the format of YYYY-MM-DD."
     )
 
+
 class Data(BaseModel):
     list_of_variables: list[Variable] = Field(
         description="The list of variables. Should be a list of Variable objects."
     )
 
+
 class Poem(BaseModel):
-    poem: str = Field(
-        description="A poem with values"
-    )
+    poem: str = Field(description="A poem with values")
+
 
 transform_agent = Agent(
     name="transform_agent",
@@ -36,10 +33,7 @@ transform_agent = Agent(
     description="An agent that can perform calculations using coding agent as tool.",
     instruction=TRANSFORM_AGENT_PROMPT,
     tools=[agent_tool.AgentTool(coding_agent)],
-    # output_key="list_of_variables",
-    # output_schema=Data
-    # tools=[CodeExecutionTool()]
-) 
+)
 
 transform_2_agent = Agent(
     name="transform_2_agent",
@@ -47,11 +41,8 @@ transform_2_agent = Agent(
     description="An agent that uses transform_agent to perform calculations using coding agent as tool. Your ultimate role is to transform output from coding agent into list of variables that get saved in output_key.",
     instruction=TRANSFORM_AGENT_PROMPT,
     sub_agents=[transform_agent],
-    # tools=[agent_tool.AgentTool(coding_agent)],
     output_key="list_of_variables",
-    # output_schema=Data
-    # tools=[CodeExecutionTool()]
-) 
+)
 
 express_output_key_agent = Agent(
     name="express_output_key_agent",

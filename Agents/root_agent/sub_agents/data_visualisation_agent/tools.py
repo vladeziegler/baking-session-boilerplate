@@ -74,37 +74,37 @@ def create_table_chart(
     
     return f"Table chart saved at: {file_path}"
 
-if __name__ == "__main__":
-    # This block of code will only run when you execute this script directly.
-    # It will NOT run when the agent imports these functions.
-    print("--- Testing visualization tools ---")
+# if __name__ == "__main__":
+#     # This block of code will only run when you execute this script directly.
+#     # It will NOT run when the agent imports these functions.
+#     print("--- Testing visualization tools ---")
 
-    # 1. Test the bar chart tool
-    print("\nTesting create_bar_chart...")
-    bar_labels = ["Apples", "Bananas", "Oranges"]
-    bar_values = [10, 15, 7]
-    bar_result = create_bar_chart(
-        labels=bar_labels,
-        values=bar_values,
-        title="Fruit Sales",
-        x_label="Fruit",
-        y_label="Quantity Sold"
-    )
-    print(f"Bar chart test complete. {bar_result}")
+#     # 1. Test the bar chart tool
+#     print("\nTesting create_bar_chart...")
+#     bar_labels = ["Apples", "Bananas", "Oranges"]
+#     bar_values = [10, 15, 7]
+#     bar_result = create_bar_chart(
+#         labels=bar_labels,
+#         values=bar_values,
+#         title="Fruit Sales",
+#         x_label="Fruit",
+#         y_label="Quantity Sold"
+#     )
+#     print(f"Bar chart test complete. {bar_result}")
 
-    # 2. Test the table chart tool
-    print("\nTesting create_table_chart...")
-    table_columns = ["Product", "Price", "In Stock"]
-    table_data = [
-        ["Laptop", "$1200", "Yes"],
-        ["Mouse", "$25", "Yes"],
-        ["Keyboard", "$75", "No"]
-    ]
-    table_result = create_table_chart(
-        data=table_data,
-        columns=table_columns,
-        title="Inventory"
-    )
-    print(f"Table chart test complete. {table_result}")
+#     # 2. Test the table chart tool
+#     print("\nTesting create_table_chart...")
+#     table_columns = ["Product", "Price", "In Stock"]
+#     table_data = [
+#         ["Laptop", "$1200", "Yes"],
+#         ["Mouse", "$25", "Yes"],
+#         ["Keyboard", "$75", "No"]
+#     ]
+#     table_result = create_table_chart(
+#         data=table_data,
+#         columns=table_columns,
+#         title="Inventory"
+#     )
+#     print(f"Table chart test complete. {table_result}")
 
-    print("\n\nAll tests finished. Check the 'charts' directory for the output images.")
+#     print("\n\nAll tests finished. Check the 'charts' directory for the output images.")
