@@ -10,6 +10,6 @@ root_agent = Agent(
     name="root_agent",
     model="gemini-2.0-flash",
     description="A root agent that delegates tasks to sub-agents. You can use transform_agent if you need to perform calculations.",
-    sub_agents=[transform_2_agent, express_output_key_agent, data_visualisation_agent],
+    sub_agents=[transform_2_agent, express_output_key_agent, data_visualisation_agent, vertex_agent],
     instruction=ROOT_AGENT_PROMPT
 )
