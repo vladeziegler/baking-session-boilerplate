@@ -33,11 +33,17 @@ Wrap built-in tools as AgenTool
 1. Agents
 2. Tools
 3. Sessions
-4. Streams
+4. ToolContext
+5. Streams
 
 5. API Service
 
 6. Create UI
 7. Add stores
 8. Connect to Components
-9. 
+9. Add middleware
+10. Connect to backend
+
+
+useful urls:  uvicorn Agents.api:app --reload
+

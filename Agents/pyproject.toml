@@ -1,0 +1,15 @@
+[project]
+name = "zadkguide-a2a-agent"
+version = "0.1.0"
+description = "ZadkGuide agent converted to A2A Protocol remote agent."
+requires-python = ">=3.10"
+dependencies = [
+    "a2a-sdk>=0.2.5",
+    "google-adk>=1.2.1",
+    "python-dotenv",
+    "uvicorn",
+    "matplotlib",
+    "pandas",
+    "numpy",
+    "seaborn",
+]
